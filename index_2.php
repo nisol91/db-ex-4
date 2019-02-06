@@ -24,23 +24,30 @@
     ?>
     <div class="container">
       <div class="titl">
-        <h1>Ospiti Hotel</h1>
+        <h1>Ospite selezionato</h1>
       </div>
       <div class="head">
-        <h2><?php echo 'id' ?></h2>
-        <h2><?php echo 'prenotazione_id' ?></h2>
-        <h2><?php echo 'ospite_id' ?></h2>
+        <h2><?php echo 'name' ?></h2>
+        <h2><?php echo 'lastname' ?></h2>
+        <h2><?php echo 'date_of_birth' ?></h2>
+
+
       </div>
+      <div class="row">
       <?php foreach ($ospiti as $key => $value) {
-        ?> <div class="row">
+        ?>
+          <?php
+          $query = $_GET['identify'];
+           if ($query === $value['id']) {
+          ?><h3><?php echo $value['name']; ?></h3>
+            <h3><?php echo $value['lastname']; ?></h3>
+            <h3><?php echo $value['date_of_birth'];?></h3> <?php
+          } ?>
 
-          <a href="<?php echo 'http://localhost/db_chiamata_con_php/index_2.php?identify='.$value['id'] ?>"> <h3><?php echo $value['id'] ?></h3></a>
-           <h3><?php echo $value['prenotazione_id'] ?></h3>
-           <h3><?php echo $value['ospite_id'] ?></h3>
 
-
-        </div> <?php
+        <?php
       } ?>
+      </div> 
     </div>
   </body>
 </html>
